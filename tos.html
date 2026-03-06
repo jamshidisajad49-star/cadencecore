@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadence Core | Music Technology & Heritage Platform</title>
+  <meta name="description" content="Cadence Core provides a premier platform for artists and institutions to manage, preserve, and monetize their musical heritage through advanced digital archives, audio restoration, and sound engineering.">
+  <link rel="icon" href="favicon.ico">
+
+  
+  <script src="https://cdn.tailwindcss.com?v=3.4.0"></script>
+  <style>
+    :root {
+      --color-primary: #cf2f49;
+      --color-primary-light: #db8997;
+      --color-primary-dark: #912133;
+      --color-secondary: #b66d48;
+      --color-accent: #43d4bc;
+      --color-surface-base: #f0f0f3;
+      --color-surface-text: #2d3748;
+      --color-neomorph-shadow-light: #ffffff;
+      --color-neomorph-shadow-dark: #d1d1e0;
+    }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      color: var(--color-surface-text);
+      background-color: var(--color-surface-base);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--color-primary);
+      background: transparent;
+      color: var(--color-primary);
+      padding: 0.75rem 2rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .card-custom {
+      border: 1px solid var(--color-primary-light);
+      background: var(--color-surface-base);
+      box-shadow: none;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    .card-custom:hover {
+      box-shadow: 6px 6px 12px var(--color-neomorph-shadow-dark), -6px -6px 12px var(--color-neomorph-shadow-light);
+    }
+
+    .icon-circular-outline {
+      border: 1px solid var(--color-primary);
+      border-radius: 50%;
+      fill: none;
+      padding: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    .icon-circular-outline svg {
+      stroke: var(--color-primary);
+      stroke-width: 2;
+    }
+    .icon-circular-outline:hover {
+      transform: scale(1.05); /* Subtle hover effect */
+    }
+
+    .neomorph-bg {
+      background-color: var(--color-surface-base);
+      box-shadow: 6px 6px 12px var(--color-neomorph-shadow-dark), -6px -6px 12px var(--color-neomorph-shadow-light);
+      border-radius: 12px;
+    }
+
+    /* Scroll animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-up.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-zoom:hover img {
+      transform: scale(1.05);
+    }
+    .image-zoom img {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Sticky navigation solid background on scroll */
+    .navbar-solid {
+      background-color: rgba(var(--color-primary-dark-rgb), 0.95); /* Using a slightly transparent dark primary for effect */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .navbar-link-solid {
+        color: white !important;
+    }
+    
+    /* Neomorphism specific styles for footer - ensure contrast */
+    footer.neomorph-bg {
+      background-color: #212529; /* Dark background */
+      box-shadow: none; /* Remove neomorphic shadow for footer for better contrast */
+      color: #ffffff; /* Light text for contrast */
+    }
+    footer.neomorph-bg a {
+      color: var(--color-accent); /* Accent color for links */
+    }
+    footer.neomorph-bg a:hover {
+      color: var(--color-primary-light);
+    }
+
+    /* Additional custom styles */
+    .section-spacing {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  </style>
+</head>
+<body>
+  <header class="fixed w-full z-50 transition-all duration-300 py-4" id="navbar">
+    <nav class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+      <a href="#" class="text-2xl font-bold text-white transition-colors duration-300" id="brand-text">Cadence Core</a>
+      <button class="lg:hidden text-white focus:outline-none" id="mobile-menu-button">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+      <div class="hidden lg:flex space-x-8" id="navbar-links">
+        <a href="#platform" class="text-white hover:text-gray-200 transition duration-300 nav-link">Platform</a>
+        <a href="#features" class="text-white hover:text-gray-200 transition duration-300 nav-link">Features</a>
+        <a href="#consultancy" class="text-white hover:text-gray-200 transition duration-300 nav-link">Consultancy</a>
+        <a href="#testimonials" class="text-white hover:text-gray-200 transition duration-300 nav-link">Testimonials</a>
+        <a href="#contact" class="text-white hover:text-gray-200 transition duration-300 nav-link">Contact</a>
+      </div>
+    </nav>
+    
+    <div id="mobile-menu" class="lg:hidden hidden bg-gray-800 bg-opacity-95 py-4 mt-2">
+      <div class="flex flex-col items-center space-y-4">
+        <a href="#platform" class="text-white hover:text-gray-200 transition duration-300 block py-2 nav-link">Platform</a>
+        <a href="#features" class="text-white hover:text-gray-200 transition duration-300 block py-2 nav-link">Features</a>
+        <a href="#consultancy" class="text-white hover:text-gray-200 transition duration-300 block py-2 nav-link">Consultancy</a>
+        <a href="#testimonials" class="text-white hover:text-gray-200 transition duration-300 block py-2 nav-link">Testimonials</a>
+        <a href="#contact" class="text-white hover:text-gray-200 transition duration-300 block py-2 nav-link">Contact</a>
+      </div>
+    </div>
+  </header>
+<main>
+<style>
+  #cadencecore-terms-and-conditions {
+    padding-top: 7rem;
+  }
+</style>
+<section id="cadencecore-terms-and-conditions">
+    <h2 style="font-size: 2.25rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Terms & Conditions</h2>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">Welcome to CadenceCore. These Terms and Conditions govern your use of our online platform and the services we provide. By accessing or using our services, you agree to be bound by these Terms and Conditions and our Privacy Policy. If you do not agree with any part of these terms, please do not use our services.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">1. Services Provided</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">CadenceCore offers a range of services tailored for the music technology industry, including but not limited to:</p>
+    <ul style="font-size: 1rem; margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: disc;">
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Digital music archives for secure storage and management of musical heritage.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Audio restoration services to enhance and preserve audio quality.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Licensing support to assist with the appropriate use and monetization of musical works.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Artist analytics to provide insights into performance and audience engagement.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Sound engineering consultancy for expert advice and technical assistance.</li>
+    </ul>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">Our platform's purpose is to empower artists and institutions to manage, preserve, and monetize their musical heritage effectively.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">2. User Accounts</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">To access certain features of our services, you may be required to register for an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for safeguarding your password and for any activities or actions under your account.</p>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">CadenceCore reserves the right to suspend or terminate your account if any information provided during the registration process or thereafter proves to be inaccurate, not current, or incomplete.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">3. Intellectual Property Rights</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">All content on this service, including text, graphics, logos, images, and software, is the property of CadenceCore or its content suppliers and is protected by intellectual property laws. You agree not to reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our service, except as necessary for your use of the services.</p>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">By submitting content to our platform for archiving, restoration, or any other service, you grant CadenceCore a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, perform, and display such content solely for the purpose of providing the services agreed upon. You represent and warrant that you own or have the necessary licenses, rights, consents, and permissions to submit the content and grant the licenses described herein.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">4. User Conduct</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">You agree not to use our services to:</p>
+    <ul style="font-size: 1rem; margin-left: 1.5rem; margin-bottom: 1.5rem; list-style: disc;">
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Upload, post, email, or otherwise transmit any content that is unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, invasive of another's privacy, hateful, or racially, ethnically, or otherwise objectionable.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Harm minors in any way.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Impersonate any person or entity, or falsely state or otherwise misrepresent your affiliation with a person or entity.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Interfere with or disrupt the service or servers or networks connected to the service.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Violate any applicable local, state, national, or international law.</li>
+        <li style="margin-bottom: 0.5rem; line-height: 1.6;">Use the service for commercial activities without prior written consent from CadenceCore.</li>
+    </ul>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">5. Payments and Billing</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">Certain services offered by CadenceCore may require payment. You agree to pay all fees and applicable taxes incurred by you or anyone using an account registered to you. We reserve the right to change our prices at any time. All payments are processed securely, and we do not store your full payment card details.</p>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">Further details regarding specific service costs, payment schedules, and refund policies will be provided in individual service agreements or upon request.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">6. Disclaimer of Warranties</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">Our services are provided on an "as is" and "as available" basis. CadenceCore makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">Furthermore, CadenceCore does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet website or otherwise relating to such materials or on any sites linked to this platform.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">7. Limitation of Liability</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">In no event shall CadenceCore or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on CadenceCore's Internet site, even if CadenceCore or a CadenceCore authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">8. Indemnification</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">You agree to indemnify, defend, and hold harmless CadenceCore, its officers, directors, employees, agents, licensors, and suppliers from and against all losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from any violation of these Terms and Conditions or any activity related to your account (including negligent or wrongful conduct) by you or any other person accessing the service using your account.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">9. Changes to Terms and Conditions</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">CadenceCore reserves the right, at its sole discretion, to modify or replace these Terms and Conditions at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">10. Governing Law</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">These Terms and Conditions shall be governed by and construed in accordance with the laws of the State of New York, USA, without regard to its conflict of law provisions.</p>
+
+    <h3 style="font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem;">11. Contact Information</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">If you have any questions about these Terms and Conditions, please contact us at:</p>
+    <p style="font-size: 1rem; margin-left: 1rem; margin-bottom: 0.5rem; line-height: 1.6;">CadenceCore</p>
+    <p style="font-size: 1rem; margin-left: 1rem; margin-bottom: 0.5rem; line-height: 1.6;">51-11 74th Street,</p>
+    <p style="font-size: 1rem; margin-left: 1rem; margin-bottom: 0.5rem; line-height: 1.6;">New York, New York, 11373</p>
+    <p style="font-size: 1rem; margin-left: 1rem; margin-bottom: 0.5rem; line-height: 1.6;">USA</p>
+    <p style="font-size: 1rem; margin-left: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">Phone: +12796648121</p>
+</section>
+</main>
+<footer class="neomorph-bg py-10 lg:py-16 text-white text-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="mb-4 text-lg">&copy; 2024 Cadence Core. Preserving musical heritage.</p>
+      <div class="flex flex-wrap justify-center space-x-4">
+        <a href="./privacy.html" class="text-accent hover:text-primary-light transition duration-300">Privacy Policy</a>
+        <a href="./tos.html" class="text-accent hover:text-primary-light transition duration-300">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  
+  <div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 flex flex-col md:flex-row items-center justify-between text-sm z-50 shadow-lg">
+    <p class="mb-2 md:mb-0 text-center md:text-left">We use cookies to improve your experience on our site. By continuing to use our site, you agree to our <a href="./privacy.html" class="text-accent underline">Privacy Policy</a>.</p>
+    <button id="accept-cookies" class="btn-outline !text-white !border-white !hover:bg-white !hover:text-gray-800 transition duration-300">Accept</button>
+  </div>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      const brandText = document.getElementById('brand-text');
+      const navLinks = document.querySelectorAll('#navbar-links .nav-link, #mobile-menu .nav-link');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-solid');
+        brandText.classList.remove('text-white');
+        brandText.classList.add('text-primary');
+        navLinks.forEach(link => link.classList.add('navbar-link-solid'));
+      } else {
+        navbar.classList.remove('navbar-solid');
+        brandText.classList.remove('text-primary');
+        brandText.classList.add('text-white');
+        navLinks.forEach(link => link.classList.remove('navbar-link-solid'));
+      }
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+      });
+    });
+
+    // Fade-in-up animation on scroll
+    const faders = document.querySelectorAll('.fade-in-up');
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('animate');
+                appearOnScroll.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+    // Cookie Consent Logic
+    const consentBanner = document.getElementById('cookie-consent-banner');
+    const acceptButton = document.getElementById('accept-cookies');
+    const cookieName = 'consent_e3d9f_tracking'; // Unique cookie name prefix
+
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        let nameEQ = name + "=";
+        let ca = document.cookie.split(';');
+        for(let i=0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    window.onload = function() {
+        if (!getCookie(cookieName)) {
+            consentBanner.classList.remove('hidden');
+            consentBanner.classList.add('flex');
+        } else {
+            consentBanner.classList.add('hidden');
+        }
+    };
+
+    acceptButton.addEventListener('click', function() {
+        setCookie(cookieName, 'true', 365); // Consent for 1 year
+        consentBanner.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
