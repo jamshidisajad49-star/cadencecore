@@ -129,6 +129,16 @@
       padding-bottom: 80px;
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTP08B4056"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YTP08B4056');
+</script>
+
 </head>
 <body>
   <header class="fixed w-full z-50 transition-all duration-300 py-4" id="navbar">
